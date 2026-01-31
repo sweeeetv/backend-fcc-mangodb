@@ -8,4 +8,6 @@ const personSchema = new mongoose.Schema({
 
 const Person = mongoose.model("Person", personSchema);
 
+console.log("Person model defined.");
+
 module.exports = Person;
