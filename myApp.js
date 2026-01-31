@@ -1,18 +1,22 @@
 require("dotenv").config();
 require("mongoose").connect(process.env.MONGO_URI);
+
 let Person = require("./models/person");
-console.log(Person);
-const createAndSavePerson = (done) => {
+
+const createAndSavePerson = async (done) => {
   const johnDoe = new Person({
     name: "John Doe",
     age: 30,
     favoriteFoods: ["pizza", "pasta"],
   });
 
-  johnDoe.save((err, data) => {
-    if (err) return console.error(err);
+  try {
+    const data = await johnDoe.save();
     done(null, data);
-  });
+  } catch (err) {
+    console.log(err);
+    done(err);
+  }
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
