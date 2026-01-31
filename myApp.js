@@ -1,7 +1,8 @@
 require("dotenv").config();
 require("mongoose").connect(process.env.MONGO_URI);
-let Person;
+let Person = require("./models/person");
 
+console.log(Person);
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
 };

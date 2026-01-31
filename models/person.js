@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const personSchema = new mongoose.Schema({
-  name: string,
+  name: String,
   age: Number,
   favoriteFoods: [String],
 });
