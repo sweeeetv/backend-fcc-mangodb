@@ -8,8 +8,8 @@ let Person = require("./models/person");
 
 const createAndSavePerson = async (done) => {
   const johnDoe = new Person({
-    name: "John Doe",
-    age: 30,
+    name: "J Doe",
+    age: 33,
     favoriteFoods: ["pizza", "pasta"],
   });
 
@@ -22,8 +22,14 @@ const createAndSavePerson = async (done) => {
   }
 };
 
-const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+const createManyPeople = async (arrayOfPeople, done) => {
+  try {
+    const data = await Person.create(arrayOfPeople);
+    done(null, data);
+  } catch (err) {
+    console.log(err);
+    done(err);
+  }
 };
 
 const findPeopleByName = (personName, done) => {
