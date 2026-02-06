@@ -102,9 +102,8 @@ const removeById = (personId, done) => {
   });
 };
 
-const removeManyPeople = (done) => {
-  const nameToRemove = "Mary";
-  Model.remove({ name: nameToRemove }, (err, data) => {
+const removeManyPeople = (nameToRemove, done) => {
+  Person.remove({ name: nameToRemove }, (err, data) => {
     if (err) {
       return done(err);
     }
